@@ -1,22 +1,5 @@
-Sombrero
-========
-
-Introduces a DSL for controlling states in a state machine. When using this 
-plugin, all ActiveRecord models will include the Sombrero::Authorizable
-module, which adds the authorized_for? method.
-
-In a controller you can then say something like 
-  if @jukebox.authorized_for?(:action => "play")
-    ...
-  end
-
-Example
-=======
-
-Add a ruby file with an instance of a DSL script in the config directory. For
-example:
-
-=== <my app>/config/sombrero_rules.rb ===
+# This is an example of a Sombrero DSL script. In this example we are trying
+# to control states on a jukebox. This file goes in the config directory.
 
 Workflow::Rules::Checker.instance.add_rules do
   # Rules for CD player
@@ -33,7 +16,3 @@ Workflow::Rules::Checker.instance.add_rules do
                     :unless => lambda { |jk| jk.cannot_be_paused? }
   display :jukebox
 end
-
-=========================================
-
-Copyright (c) 2011 [Julio], released under the MIT license
